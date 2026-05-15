@@ -65,8 +65,9 @@ export class Wheel {
             this.ctx.textBaseline = 'middle';
             this.ctx.fillStyle = '#f8fafc'; // slate-50
             
-            // Dynamic font sizing
-            const fontSize = numSegments <= 8 ? 16 : numSegments <= 12 ? 13 : 11;
+            // Dynamic font sizing (scaled 2x)
+            const baseFontSize = numSegments <= 8 ? 16 : numSegments <= 12 ? 13 : 11;
+            const fontSize = Math.round(baseFontSize * 2);
             this.ctx.font = `bold ${fontSize}px Inter, sans-serif`;
             
             // Max width for text
@@ -93,7 +94,7 @@ export class Wheel {
         this.ctx.textAlign = 'center';
         this.ctx.textBaseline = 'middle';
         this.ctx.fillStyle = '#94a3b8';
-        this.ctx.font = '16px Inter, sans-serif';
+        this.ctx.font = '32px Inter, sans-serif';
         this.ctx.fillText('NO PARTICIPANTS', this.centerX, this.centerY);
     }
 

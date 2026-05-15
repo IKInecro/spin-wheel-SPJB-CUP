@@ -33,9 +33,10 @@
 body {
     font-family: var(--font-ui);
     background-color: var(--bg-darker);
-    background-image: 
-        radial-gradient(circle at 15% 50%, rgba(1, 66, 15, 0.4), transparent 25%),
-        radial-gradient(circle at 85% 30%, rgba(1, 66, 15, 0.4), transparent 25%);
+    background-image: url("../background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--text-main);
     height: 100vh;
     overflow: hidden;
@@ -317,7 +318,7 @@ textarea:focus {
 
 .wheel-container {
     position: relative;
-    width: min(380px, 90%);
+    width: min(1125px, 90%);
     aspect-ratio: 1;
     display: flex;
     justify-content: center;
