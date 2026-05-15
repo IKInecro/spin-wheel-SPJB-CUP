@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMA PGRI JASINGA BOGOR CUP 2026 - Tournament Generator</title>
+    <!-- Google Fonts: Orbitron for numbers/headers, Inter for UI -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header glass-panel">
+            <div class="logo-container">
+                <img id="logoImage" src="logo.png" alt="Tournament Logo">
+            </div>
+            <div class="title-container">
+                <h1 class="main-title">SMA PGRI JASINGA</h1>
+                <h2 class="sub-title">BOGOR CUP 2026</h2>
+            </div>
+        </header>
+
+        <!-- Main Workspace -->
+        <main class="main-workspace">
+            
+            <!-- Left Panel: Participants Input -->
+            <aside class="side-panel left-panel glass-panel">
+                <div class="panel-header">
+                    <h3>PARTICIPANTS</h3>
+                    <div class="badge" id="participantCount">0</div>
+                </div>
+                <div class="input-container">
+                    <textarea id="participantInput" placeholder="Paste list of teams here...&#10;Team A&#10;Team B&#10;Team C"></textarea>
+                </div>
+                <div class="panel-controls">
+                    <button id="btnAdd" class="btn btn-primary">Load Teams</button>
+                    <button id="btnRandomize" class="btn btn-secondary">Shuffle</button>
+                    <button id="btnClear" class="btn btn-danger">Clear</button>
+                </div>
+                <div class="status-box">
+                    <div class="status-row"><span>Bracket Status:</span> <span id="statusBracket" class="text-emerald">Waiting</span></div>
+                    <div class="status-row"><span>Total Slots:</span> <span id="statusSlots">-</span></div>
+                    <div class="status-row"><span>Byes:</span> <span id="statusByes">-</span></div>
+                </div>
+            </aside>
+
+            <!-- Center Panel: Wheel Spin -->
+            <section class="center-panel glass-panel">
+                <div class="wheel-container">
+                    <canvas id="wheelCanvas" width="500" height="500"></canvas>
+                    <div class="wheel-pointer"></div>
+                    <div class="wheel-center-dot"></div>
+                </div>
+                
+                <div class="spin-controls">
+                    <button id="btnSpin" class="btn btn-massive btn-glow" disabled>START SPIN</button>
+                    <div class="toggle-container">
+                        <label class="switch">
+                            <input type="checkbox" id="toggleAutoSpin">
+                            <span class="slider round"></span>
+                        </label>
+                        <span class="toggle-label">Auto Spin Mode</span>
+                    </div>
+                </div>
+
+                <!-- Dramatic Winner Reveal Card (Hidden by default) -->
+                <div id="winnerCard" class="winner-card-overlay hidden">
+                    <div class="particles-container" id="particlesContainer"></div>
+                    <div class="winner-card glass-panel emerald-glow">
+                        <h4>SELECTED</h4>
+                        <h2 id="winnerName">TEAM NAME</h2>
+                        <button id="btnNextSpin" class="btn btn-primary mt-4">Continue</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel: Bracket -->
+            <section class="right-panel bracket-workspace glass-panel">
+                <div class="panel-header">
+                    <h3>TOURNAMENT BRACKET</h3>
+                </div>
+                <div class="bracket-container" id="bracketContainer">
+                    <!-- Bracket nodes injected via JS -->
+                    <div class="empty-state">
+                        <p>Load teams to generate bracket</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts using ES Modules -->
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
